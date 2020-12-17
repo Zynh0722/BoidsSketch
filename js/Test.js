@@ -1,0 +1,1 @@
+document.getElementById("Lyrics").innerHTML = "Did it work?"
