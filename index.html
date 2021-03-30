@@ -1,19 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Zynh's Git.io
+    </title>
 
-    <title>Sketch</title>
+    <meta charset="utf-8">
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Mobile First, don't know if it works tbh -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/hackyalignment.css">
+    <link rel="stylesheet" href="./css/colorshenanigans.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
   </head>
 
-  <body>
-    <script src="sketch.js"></script>
-    <script src="classes/boid.js"></script>
+  <body style="background-color:#282828">
+  <div class="container">
+    <div class="row vertical-align"> <!--
+      ^--  Additional class -->
+      <div class="col-xs-4">
+        <h1>Spotify Lyrics</h1>
+      </div>
+      <div class="col-xs-8 text-right">
+        <button type="button" class="btn tdark">Insert button here</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h4 id="Title">Insert Song Here</h2>
+        <p id="Lyrics"></p>
+      </div>
+    </div>
+  </div>
   </body>
+
+  <script src="./js/Test.js"></script>
 </html>
