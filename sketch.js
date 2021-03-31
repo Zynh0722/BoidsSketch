@@ -33,11 +33,11 @@ function draw() {
       boid.clean();
     }
 
-    boids = [];
+    // boids = [];
     
-    for (let i = 0; i < nBoids; i++) {
-      boids.push(new Boid(random(0, width), random(0, height)));
-    }
+    // for (let i = 0; i < nBoids; i++) {
+    //   boids.push(new Boid(random(0, width), random(0, height)));
+    // }
     
     random(boids).infect();
     random(boids).vaccinate();  
