@@ -9,14 +9,19 @@ class Boid {
         this.acc = createVector();
 
         let colors = [];
-        colors.push(color('#006FFF'));
-        colors.push(color('#13F4EF'));
-        colors.push(color('#68FF00'));
-        colors.push(color('#FFBF00'));
-        colors.push(color('#FAFF00'));
-        colors.push(color('#FF005C'));
-        this.color = color(random(colors));
+        // colors.push(color('#006FFF'));
+        // colors.push(color('#13F4EF'));
+        // colors.push(color('#68FF00'));
+        // colors.push(color('#FFBF00'));
+        // colors.push(color('#FAFF00'));
+        // colors.push(color('#FF005C'));
 
+        colors.push(color('#61048f'));
+        colors.push(color('#ffffff'));
+        colors.push(color('#c9c9c9'));
+        colors.push(color('#0a0a0a'));
+        this.color = color(random(colors));
+        //comment for funsie
     }
     
     align(boids) {
