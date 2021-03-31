@@ -16,10 +16,11 @@ class Boid {
         // colors.push(color('#FAFF00'));
         // colors.push(color('#FF005C'));
 
-        colors.push(color('#61048f'));
-        colors.push(color('#ffffff'));
-        colors.push(color('#c9c9c9'));
-        colors.push(color('#0a0a0a'));
+        colors.push(color('#55CDFC'));
+        colors.push(color('#55CDFC'));
+        colors.push(color('#FFFFFF'));
+        colors.push(color('#F7A8B8'));
+        colors.push(color('#F7A8B8'));
         this.color = color(random(colors));
         //comment for funsie
     }

@@ -8,7 +8,7 @@ function setup() {
 }
 
 function draw() {
-  background(20);
+  background(10);
 
   for (let boid of boids) {
     boid.update(boids);
