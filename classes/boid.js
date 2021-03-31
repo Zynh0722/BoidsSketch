@@ -67,7 +67,6 @@ class Boid {
         }
         if (total > 0) {
             target.div(total);
-            target.sub(this.pos);
             target.setMag(this.maxSpeed);
             target.limit(this.maxForce);
         }
@@ -77,7 +76,7 @@ class Boid {
     }
 
     centerPull() {
-        return p5.Vector.sub(this.pos, createVector(width/2, height/2)).limit(this.maxForce * 1).mult(-1);
+        return p5.Vector.sub(this.pos, createVector(width/2, height/2)).limit(this.maxForce * 0.2).mult(-1);
     }
 
 
