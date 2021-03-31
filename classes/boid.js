@@ -1,7 +1,7 @@
 class Boid {
     constructor(pX = windowWidth/2, pY = windowHeight/2) {
         this.maxSpeed = 5;
-        this.visionRange = 100;
+        this.visionRange = 50;
         this.maxForce = 0.2;
 
         this.pos = createVector(pX, pY);
@@ -16,15 +16,45 @@ class Boid {
         // colors.push(color('#FAFF00'));
         // colors.push(color('#FF005C'));
 
-        colors.push(color('#55CDFC'));
-        colors.push(color('#55CDFC'));
-        colors.push(color('#FFFFFF'));
-        colors.push(color('#F7A8B8'));
-        colors.push(color('#F7A8B8'));
-        this.color = color(random(colors));
+        // colors.push(color('#3dfcff'));
+        // colors.push(color('#FFFFFF'));
+        // colors.push(color('#ff4ff0'));
+        // this.color = color(random(colors));
+        this.color = color(255);
+        this.infectedColor = color('#158F00');
+        this.vaccinatedColor = color('#A00361');
+        
         //comment for funsie
+
+        this.vaccinated = false;
+        this.infected = false;
+    }
+
+    isInfected() {
+        return this.infected;
+    }
+
+    isVaccinated() {
+        return this.vaccinated;
     }
     
+    infect () {
+        if (!this.isInfected() && !this.isVaccinated()) {
+            this.infected = true;
+        }
+    }
+
+    vaccinate() {
+        if (!this.isInfected() && !this.isVaccinated()) {
+            this.vaccinated = true;
+        }
+    }
+
+    clean () {
+        this.vaccinated = false; 
+        this.infected = false;
+    }
+
     align(boids) {
         let target = createVector();
 
@@ -33,6 +63,14 @@ class Boid {
             let d = dist(this.pos.x, this.pos.y, other.pos.x, other.pos.y);
             if (other != this && d < this.visionRange) {
                 target.add(other.vel);
+                if (d < this.visionRange / 1) {
+                    if (this.isInfected()) {
+                        other.infect();
+                    }
+                    if (this.isVaccinated()) {
+                        other.vaccinate();
+                    }
+                }
                 total++;
             }
         }
@@ -61,7 +99,12 @@ class Boid {
         if (total > 0) {
             target.div(total);
             target.sub(this.pos);
-            target.limit(this.maxForce * 1);
+            if (total > 25) {
+                target.limit(this.maxForce * -10);
+            } else {
+                target.limit(this.maxForce * 1);
+            }
+            
         }
         
         
@@ -74,7 +117,7 @@ class Boid {
         let total = 0;
         for (let other of boids) {
             let d = dist(this.pos.x, this.pos.y, other.pos.x, other.pos.y);
-            if (other != this && d < this.visionRange * 0.3) {
+            if (other != this && d < this.visionRange * 0.5) {
                 let diff = p5.Vector.sub(this.pos, other.pos);
                 diff.div(d);    
                 target.add(diff);
@@ -94,7 +137,6 @@ class Boid {
     centerPull() {
         return p5.Vector.sub(this.pos, createVector(width/2, height/2)).limit(this.maxForce * 0.2).mult(-1);
     }
-
 
     edge() {
         if (this.pos.x < 0) {
@@ -124,7 +166,14 @@ class Boid {
     draw() {
         push();
         strokeWeight(1);
-        stroke(this.color);
+        if (this.isInfected()) {
+            stroke(this.infectedColor);
+        } else if (this.isVaccinated()) {
+            stroke(this.vaccinatedColor);
+        } else {
+            stroke(this.color);
+        }
+        
         noFill();
 
         translate(this.pos.x, this.pos.y);
