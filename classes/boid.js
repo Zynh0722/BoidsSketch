@@ -68,7 +68,7 @@ class Boid {
         if (total > 0) {
             target.div(total);
             target.setMag(this.maxSpeed);
-            target.limit(this.maxForce);
+            target.limit(this.maxForce * 2);
         }
         
         
