@@ -69,7 +69,7 @@ class Boid {
             target.div(total);
             target.sub(this.pos);
             target.setMag(this.maxSpeed);
-            target.limit(this.maxForce * 2);
+            target.limit(this.maxForce * 3);
         }
         
         
