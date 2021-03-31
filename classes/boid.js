@@ -58,9 +58,9 @@ class Boid {
         let total = 0;
         for (let other of boids) {
             let d = dist(this.pos.x, this.pos.y, other.pos.x, other.pos.y);
-            if (other != this && d < this.visionRange * 0.2) {
+            if (other != this && d < this.visionRange * 0.5) {
                 let diff = p5.Vector.sub(this.pos, other.pos);
-                diff.mult(d);
+                diff.div(d);
                 target.add(diff);
                 total++;
             }
@@ -69,7 +69,7 @@ class Boid {
             target.div(total);
             target.sub(this.pos);
             target.setMag(this.maxSpeed);
-            target.limit(this.maxForce * 6);
+            target.limit(this.maxForce);
         }
         
         
