@@ -1,51 +1,45 @@
-let boids = [];
+var boids = []
 
-const nBoids = 400;
+var curBoids = nBoids;
 
 function setup() {
+  font = loadFont('assets/SansForgetica-Regular.otf');
+
   createCanvas(windowWidth, windowHeight);
-  for (let i = 0; i < nBoids; i++) {
+
+  
+  for (let i = 0; i < curBoids; i++) {
     boids.push(new Boid(random(0, width), random(0, height)));
   }
-
-  boids[0].infect();
-  boids[1].vaccinate();
 }
 
 function draw() {
-  background(10);
-
-  let infected = 0;
-  let vaccinated = 0;
-  for (let i of boids) {
-    // console.log(i);
-    if (i.isInfected()) {
-      infected++
-    }
-    if (i.isVaccinated()) {
-      vaccinated++;
-    }
-  }
-  console.log("Infected: " + infected + " Vaccinated: " + vaccinated);
-
-  if (infected + vaccinated == nBoids) {
-    for (let boid of boids) {
-      boid.clean();
-    }
-
-    // boids = [];
-    
-    // for (let i = 0; i < nBoids; i++) {
-    //   boids.push(new Boid(random(0, width), random(0, height)));
-    // }
-    
-    random(boids).infect();
-    random(boids).vaccinate();  
-  }
-
+  background(20);
 
   for (let boid of boids) {
     boid.update(boids);
     boid.draw();
   }
+
+
+  
+  if (nBoids != curBoids) {
+    curBoids = nBoids;
+    boids = [];
+
+    // boids.push(new Boid(random(0, width), random(0, height)));
+    for (let i = 0; i < curBoids; i++) {
+      boids.push(new Boid(random(0, width), random(0, height)));
+    }
+  }
+
+  push();
+  noStroke();
+  fill(255);
+  textFont(font);
+  // textSize(width * .3);
+  text("VAL", width - 40, 20);
+  // textAlign(CENTER);
+  // text("VAL", width /2 - 50, height / 2 + textAscent() / 2);
+  pop();
 }
