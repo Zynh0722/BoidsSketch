@@ -7,6 +7,16 @@ class Boid {
         this.pos = createVector(pX, pY);
         this.vel = createVector(random(-1, 1), random(-1, 1)).setMag(random(2, this.maxSpeed));
         this.acc = createVector();
+
+        let colors = [];
+        colors.push(color('#006FFF'));
+        colors.push(color('#13F4EF'));
+        colors.push(color('#68FF00'));
+        colors.push(color('#FFBF00'));
+        colors.push(color('#FAFF00'));
+        colors.push(color('#FF005C'));
+        this.color = color(random(colors));
+
     }
     
     align(boids) {
@@ -108,7 +118,7 @@ class Boid {
     draw() {
         push();
         strokeWeight(1);
-        stroke(255);
+        stroke(this.color);
         noFill();
 
         translate(this.pos.x, this.pos.y);
