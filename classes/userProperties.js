@@ -1,4 +1,4 @@
-var nBoids = 1;
+var nBoids = 300;
 
 window.wallpaperPropertyListener = {
     applyUserProperties: function (properties) {
@@ -6,7 +6,7 @@ window.wallpaperPropertyListener = {
             if (properties.boids) {
                 nBoids = properties.boids.value;
             } else {
-                nBoids = 100;
+                nBoids = 300;
             }
         
         // Add more properties here
