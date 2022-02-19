@@ -80,7 +80,7 @@ class Boid {
     }
 
     mousePull() {
-        return p5.Vector.sub(this.pos, createVector(mouseX, mouseY)).limit(this.maxForce * 1).mult(-1);
+        return p5.Vector.sub(this.pos, createVector(mouseX, mouseY)).limit(this.maxForce * 0.2).mult(-1);
     }
 
     edge() {
