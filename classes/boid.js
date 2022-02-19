@@ -79,6 +79,9 @@ class Boid {
         return p5.Vector.sub(this.pos, createVector(width/2, height/2)).limit(this.maxForce * 0.2).mult(-1);
     }
 
+    mousePull() {
+        return p5.Vector.sub(this.pos, createVector(mouseX, mouseY)).limit(this.maxForce * 0.2).mult(-1);
+    }
 
     edge() {
         if (this.pos.x < -20) {
@@ -100,6 +103,7 @@ class Boid {
         this.acc.add(this.adhere(boids));
         this.acc.add(this.seperate(boids));
         this.acc.add(this.centerPull());
+        this.acc.add(this.mousePull());
         this.vel.add(this.acc).limit(this.maxSpeed);
         this.pos.add(this.vel);
         this.acc.mult(0)
